@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptBuddy - AI-Powered Prompt Enhancer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="logo-icon"><i data-lucide="brain" class="icon-small"></i></div>
+                        <div>
+                            <span class="logo-text">PromptBuddy</span>
+                            <div class="logo-subtext">Powered by Gemini 1.5 Flash</div>
+                        </div>
+                    </div>
+                    <nav class="nav">
+                        <a href="#" class="nav-link">Home</a>
+                        <a href="#enhancer" class="nav-link">Enhancer</a>
+                        <a href="#templates" class="nav-link">Templates</a>
+                        <a href="#how-it-works" class="nav-link">How It Works</a>
+                        <button class="primary-button"><i data-lucide="zap" class="icon-small"></i> Try Enhancer</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <div class="hero-circle"></div>
+                <div class="hero-circle"></div>
+                <div class="hero-circle"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i data-lucide="brain" class="icon-small"></i>
+                        <span>Powered by Gemini 1.5 Flash</span>
+                        <i data-lucide="zap" class="icon-small"></i>
+                    </div>
+                    <h1>
+                        Your AI
+                        <span class="highlight">Prompt Buddy</span>
+                    </h1>
+                    <p>Transform your basic prompts into powerful, context-aware instructions with our AI-powered enhancer.</p>
+                    <div class="search-container">
+                        <i data-lucide="search" class="search-icon"></i>
+                        <input
+                            type="text"
+                            placeholder="Enter your basic prompt to enhance..."
+                            class="search-input"
+                            id="prompt-input"
+                            aria-label="Enter your basic prompt to enhance"
+                        />
+                        <button class="enhance-button" id="enhance-button">
+                            <i data-lucide="sparkles" class="icon-small"></i> Enhance
+                        </button>
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="primary-button"><i data-lucide="brain" class="icon-small"></i> Try Prompt Enhancer</button>
+                        <a href="#templates" class="secondary-button">Browse Templates</a>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="brain" class="icon-large"></i></div>
+                            <h3>AI Enhancement</h3>
+                            <p>Automatically improves your prompts with Gemini 1.5 Flash.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="zap" class="icon-large"></i></div>
+                            <h3>Instant Results</h3>
+                            <p>Get enhanced prompts in seconds with real-time optimization.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i data-lucide="sparkles" class="icon-large"></i></div>
+                            <h3>Smart Templates</h3>
+                            <p>Access curated templates for every use case and industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Prompt Display -->
+        <div id="enhanced-result" class="enhanced-result" style="display: none;">
+            <div class="container">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3><i data-lucide="sparkles" class="icon-small"></i> Enhanced Prompt</h3>
+                        <button class="copy-result-btn" id="copy-result">
+                            <i data-lucide="copy" class="icon-small"></i> Copy
+                        </button>
+                    </div>
+                    <div class="result-content" id="enhanced-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How PromptBuddy Works</h2>
+                    <p>Transform any basic prompt into a powerful, AI-optimized instruction in three simple steps.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-content">
+                            <div class="step-icon" style="background-color: #10B981;">
+                                <i data-lucide="message-square" class="icon-large"></i>
+                            </div>
+                            <div class="step-number">1</div>
+                            <div class="step-connector"></div>
+                            <h3>Input Your Basic Prompt</h3>
+                            <p>Start with any simple prompt or idea. PromptBuddy works with whatever you have in mind.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-content">
+                            <div class="step-icon" style="background-color: #14B8A6;">
+                                <i data-lucide="brain" class="icon-large"></i>
+                            </div>
+                            <div class="step-number">2</div>
+                            <div class="step-connector"></div>
+                            <h3>AI Enhancement Magic</h3>
+                            <p>Gemini 1.5 Flash analyzes your prompt and adds context, specificity, and optimization for better results.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-content">
+                            <div class="step-icon" style="background-color: #3B82F6;">
+                                <i data-lucide="zap" class="icon-large"></i>
+                            </div>
+                            <div class="step-number">3</div>
+                            <h3>Get Enhanced Results</h3>
+                            <p>Receive a professionally crafted, AI-optimized prompt that delivers superior outputs across any platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="examples">
+                    <h3>See the Enhancement in Action</h3>
+                    <div class="example-grid">
+                        <div class="example-card basic">
+                            <div class="example-header">
+                                <span class="example-icon">×</span>
+                                <h4>Basic Prompt</h4>
+                            </div>
+                            <p>"Write a blog post about AI"</p>
+                        </div>
+                        <div class="example-card enhanced">
+                            <div class="example-header">
+                                <i data-lucide="brain" class="icon-small"></i>
+                                <h4>Enhanced by PromptBuddy</h4>
+                            </div>
+                            <p>"Write a 1,500-word blog post about practical AI applications in small businesses. Include: current market trends, 3 specific use cases with ROI examples, implementation challenges, and actionable next steps. Target audience: small business owners with limited technical knowledge. Tone: informative yet accessible."</p>
+                        </div>
+                    </div>
+                    <div class="pro-tip">
+                        <i data-lucide="zap" class="icon-small"></i>
+                        <h4>Pro Tip</h4>
+                        <p>The enhanced prompt provides context, specificity, structure, and clear expectations - resulting in better AI outputs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-header">
+                    <h2>Search Templates</h2>
+                    <p>Find the perfect template for your needs</p>
+                </div>
+                <div class="search-form">
+                    <input
+                        type="text"
+                        placeholder="Search templates..."
+                        id="template-search"
+                        value="{{ search_query }}"
+                    />
+                    <button id="search-button">
+                        <i data-lucide="search" class="icon-small"></i> Search
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Grid -->
+        <section class="category-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Explore by Category</h2>
+                    <p>Discover AI-enhanced prompt templates organized by your specific needs.</p>
+                </div>
+                <div class="category-grid">
+                    {% for category in categories %}
+                    <div class="category-card {% if selected_category == category.name %}selected{% endif %}" onclick="window.location.href='/?category={{ category.name }}&search={{ search_query }}'">
+                        <div class="category-content">
+                            <div class="category-icon">{{ category.icon }}</div>
+                            <h3>{{ category.name }}</h3>
+                            <p>{{ category.description }}</p>
+                            <div class="category-count">{{ category.count }} templates</div>
+                            <button class="category-button">Explore Templates →</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="category-footer">
+                    <a href="/?category=All&search={{ search_query }}" class=" {% if selected_category == 'All' %}primary-button{% else %}secondary-button{% endif %}">
+                        Show All Categories
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Templates Section -->
+        <section id="templates" class="templates-section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2>Smart Templates</h2>
+                        <p>Pre-built prompts optimized for maximum effectiveness.</p>
+                    </div>
+                    <div class="templates-info">
+                        <span>{{ prompts|length }} templates available</span>
+                        <button class="secondary-button"><i data-lucide="brain" class="icon-small"></i> AI-Enhanced</button>
+                    </div>
+                </div>
+                <div class="templates-grid">
+                    {% for prompt in prompts %}
+                    <div class="prompt-card">
+                        <div class="prompt-card-header">
+                            <div class="ai-badge">AI Enhanced <i data-lucide="brain" class="icon-small"></i></div>
+                            <div class="prompt-icon">{{ prompt.icon }}</div>
+                            <h3 class="prompt-title">{{ prompt.title }}</h3>
+                            <span class="category-badge">{{ prompt.category }}</span>
+                        </div>
+                        <div class="prompt-card-content">
+                            <p class="prompt-description">{{ prompt.description }}</p>
+                            <div class="tags-container">
+                                {% for tag in prompt.tags %}
+                                <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="prompt-actions">
+                                <button class="copy-button" onclick="copyPrompt('Create {{ prompt.title|lower }}: {{ prompt.description }}')">
+                                    <i data-lucide="copy" class="icon-small"></i> Use Template
+                                </button>
+                                <button class="enhance-button"><i data-lucide="zap" class="icon-small"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if not prompts %}
+                <div class="no-results">
+                    <div class="no-results-icon"><i data-lucide="search" class="icon-large"></i></div>
+                    <h3>No templates found</h3>
+                    <p>Try adjusting your search or explore different categories.</p>
+                    <a href="/?category=All" class="primary-button">Browse All Templates</a>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <div class="logo-icon"><i data-lucide="brain" class="icon-small"></i></div>
+                            <span>PromptBuddy</span>
+                        </div>
+                        <p>Your AI-powered companion for creating better prompts.</p>
+                        <div class="footer-badge">
+                            <i data-lucide="brain" class="icon-small"></i> Powered by Gemini 1.5 Flash
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#" class="footer-link">Prompt Enhancer</a></li>
+                            <li><a href="#" class="footer-link">Templates</a></li>
+                            <li><a href="#" class="footer-link">API Access</a></li>
+                            <li><a href="#" class="footer-link">Pricing</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#" class="footer-link">About</a></li>
+                            <li><a href="#" class="footer-link">Blog</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 PromptBuddy. Built with precision and AI innovation.</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Privacy</a>
+                        <a href="#" class="footer-link">Terms</a>
+                        <a href="#" class="footer-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Copy to clipboard function
+        async function copyPrompt(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showNotification("Template copied to clipboard!");
+            } catch (err) {
+                showNotification("Failed to copy prompt. Please try again.", "error");
+            }
+        }
+
+        // Show notification function
+        function showNotification(message, type = "success") {
+            const notification = document.createElement("div");
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === "error" ? "#ef4444" : "#10b981"};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Enhanced prompt enhancement function
+        document.getElementById("enhance-button").addEventListener("click", async () => {
+            const input = document.getElementById("prompt-input");
+            const button = document.getElementById("enhance-button");
+            const resultDiv = document.getElementById("enhanced-result");
+            const contentDiv = document.getElementById("enhanced-content");
+            
+            const prompt = input.value.trim();
+            
+            if (!prompt) {
+                showNotification("Please enter a prompt to enhance.", "error");
+                return;
+            }
+
+            // Show loading state
+            button.disabled = true;
+            const originalContent = button.innerHTML;
+            button.innerHTML = '<i data-lucide="loader" class="icon-small animate-spin"></i> Enhancing...';
+            
+            try {
+                const response = await fetch("/enhance", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({ prompt })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    showNotification(data.error, "error");
+                } else {
+                    // Display the enhanced prompt
+                    contentDiv.textContent = data.enhanced_prompt;
+                    resultDiv.style.display = "block";
+                    resultDiv.scrollIntoView({ behavior: "smooth" });
+                    showNotification("Prompt enhanced successfully!");
+                }
+            } catch (err) {
+                console.error("Enhancement error:", err);
+                showNotification("Failed to enhance prompt. Please try again.", "error");
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalContent;
+                lucide.createIcons();
+            }
+        });
+
+        // Copy enhanced result
+        document.getElementById("copy-result").addEventListener("click", async () => {
+            const content = document.getElementById("enhanced-content").textContent;
+            try {
+                await navigator.clipboard.writeText(content);
+                showNotification("Enhanced prompt copied to clipboard!");
+            } catch (err) {
+                showNotification("Failed to copy. Please try again.", "error");
+            }
+        });
+
+        // Template search functionality
+        document.getElementById("search-button").addEventListener("click", () => {
+            const searchQuery = document.getElementById("template-search").value;
+            const url = new URL(window.location);
+            url.searchParams.set("search", searchQuery);
+            window.location.href = url.toString();
+        });
+
+        // Handle Enter key in search
+        document.getElementById("template-search").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("search-button").click();
+            }
+        });
+
+        // Handle Enter key in prompt input
+        document.getElementById("prompt-input").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("enhance-button").click();
+            }
+        });
+    </script>
+
+    <style>
+        .enhanced-result {
+            background: linear-gradient(to right, #f3f4f6, #ffffff);
+            padding: 2rem 0;
+            margin: 2rem 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .result-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .copy-result-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .copy-result-btn:hover {
+            background: #059669;
+        }
+
+        .result-content {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            line-height: 1.6;
+            color: #374151;
+            white-space: pre-wrap;
+        }
+
+        .search-section {
+            background: #f8fafc;
+            padding: 3rem 0;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>
