@@ -1,5 +1,7 @@
-[media pointer="file-service://file-KuMdDhm5j112XPs19FFCed"]
+
 # PromptBuddy – AI-Powered Prompt Enhancer
+
+#LIVE DEMO [https://prompt-buddy-seven.vercel.app/](https://prompt-buddy-seven.vercel.app/)
 
 ## Inspiration
 
